@@ -1,0 +1,45 @@
+APEX FORGE — HOW TO ADD A DISCOUNT
+====================================
+
+You do not need to redesign the website.
+
+EXAMPLE:
+Normal price: ₹10,000
+Discounted price: ₹8,000
+Discount label: 20% OFF
+
+STEPS
+1. Open the website folder.
+2. Open index.html using TextEdit or VS Code.
+3. Press Command + F and search for the plan price, e.g. ₹10,000.
+4. Near it, you will see:
+
+<div class="old-price discount-hidden">₹12,500</div>
+<div class="price"><span>₹</span>10,000</div>
+<div class="discount-badge discount-hidden">20% OFF</div>
+
+5. Change the old price to the original/full price.
+6. Change the current price to the discounted price.
+7. Change the discount text if needed.
+8. Remove the words: discount-hidden
+   from BOTH the old-price line and the discount-badge line.
+
+After editing, it should look like:
+
+<div class="old-price">₹10,000</div>
+<div class="price"><span>₹</span>8,000</div>
+<div class="discount-badge">20% OFF</div>
+
+9. Save the file.
+10. Drag the entire updated website folder into Netlify's Production Deploys box.
+
+TO REMOVE THE DISCOUNT LATER
+Add the words discount-hidden back to both lines:
+
+<div class="old-price discount-hidden">₹10,000</div>
+<div class="discount-badge discount-hidden">20% OFF</div>
+
+IMPORTANT
+Also update the button's data-price value in index.html so the payment screen shows the discounted amount.
+Example:
+data-price="₹8,000"

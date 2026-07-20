@@ -1,0 +1,93 @@
+APEX FORGE — SIMPLE SETUP GUIDE
+=================================
+
+Almost everything is already completed:
+✓ Premium website
+✓ Plan pricing
+✓ Razorpay QR code
+✓ Razorpay payment-page link
+✓ Digital client assessment
+✓ Payment transaction-ID collection
+✓ Optional payment screenshot upload
+✓ Optional progress-photo upload
+✓ Automatic welcome email
+✓ Assessment sent to your Gmail
+✓ Downloadable Word questionnaire
+✓ WhatsApp confirmation
+
+YOU ONLY HAVE TO DO THESE 3 THINGS
+
+1) PUBLISH THE WEBSITE
+Recommended easiest option: Netlify Drop.
+- Unzip this folder.
+- Open Netlify Drop in your browser.
+- Drag the entire “apex_forge_complete” folder into the upload box.
+- Netlify gives you a public website link.
+- Test the website on your phone.
+
+Important: Upload the whole folder, not only index.html.
+
+2) ACTIVATE THE ASSESSMENT EMAIL — ONE TIME ONLY
+- Open the live website.
+- Select any plan.
+- Click “I’ve Paid — Complete Assessment”.
+- Fill a test assessment using your own email and submit it.
+- FormSubmit sends an activation email to h.harshul08@gmail.com.
+- Open Gmail and click the activation/confirmation link.
+- After this one-time activation, every new client assessment will automatically arrive in your Gmail.
+- The client will automatically receive the welcome email.
+
+Check Spam/Promotions if the activation email is not visible.
+
+3) TEST THE COMPLETE CLIENT JOURNEY
+- Select the 3-month plan.
+- Confirm ₹6,000 appears.
+- Scan the QR only if doing a real test payment.
+- Click “I’ve Paid”.
+- Complete the assessment.
+- Confirm:
+  a) The assessment reaches h.harshul08@gmail.com.
+  b) The client email receives the welcome message.
+  c) The thank-you page opens.
+  d) The WhatsApp confirmation works.
+
+IMPORTANT LIMITATION
+The QR is a general UPI QR. The website cannot independently know whether payment was successful.
+The client must enter the UPI transaction ID, and you must verify it in Razorpay/your bank before starting coaching.
+
+For fully automatic payment verification later:
+- Create separate Razorpay Payment Links for ₹6,000, ₹10,000 and ₹17,000.
+- Then use Razorpay webhooks or a no-code automation platform.
+- This requires a payment-specific setup and is not safely possible using only a QR image.
+
+FILES
+- index.html: Main website
+- assessment.html: Digital assessment
+- thank-you.html: Confirmation page
+- styles.css: Website design
+- script.js: Website behaviour
+- assets/razorpay-qr.jpeg: Payment QR
+- assets/Apex_Forge_Client_Assessment.docx: Downloadable Word form
+
+DO NOT EDIT CODE unless you want to change text, prices, email or phone number.
+
+
+V2 NOTE
+-------
+The brochure hero background has been replaced with a cleaner premium fitness visual.
+For future discounts, open HOW_TO_ADD_DISCOUNT.txt.
+
+V3 UPDATE
+---------
+✓ Coach Harshul's gym photo added
+✓ New Meet Your Coach section
+✓ Limited-period 20% offer activated
+✓ Discounted plan prices and payment-screen amounts updated
+
+TO UPDATE YOUR LIVE NETLIFY WEBSITE
+1. Unzip Apex_Forge_V3_Website.zip.
+2. Open Netlify and select your Apex Forge project.
+3. Find Production deploys.
+4. Drag the entire apex_forge_v3 folder into the upload box.
+5. Wait until the new deploy says Published.
+6. Refresh https://apex-forge-fit.netlify.app
