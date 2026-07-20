@@ -1,40 +1,34 @@
-APEX FORGE — PREMIUM FITNESS WEBSITE
+APEX FORGE V4 — WHITE MULTI-PAGE WEBSITE
 
-Brand name:
-Apex Forge
-Tagline: Built Strong. Live Limitless.
+Pages:
+- index.html — short home page
+- coaching.html — coaching details and pricing
+- supplements.html — supplement products and prices
+- about.html — Coach Harshul profile
+- assessment.html — existing assessment form
+- thank-you.html — assessment confirmation
 
-Included:
-- Premium responsive one-page website
-- Coaching plan pricing:
-  • 3 months: ₹6,000
-  • 6 months: ₹10,000
-  • 12 months: ₹17,000
-- Razorpay payment link integrated:
-  https://razorpay.me/@harshulmehta
-- Buyer intake modal before payment
-- WhatsApp onboarding message
-- Supplement enquiry buttons
-- Mobile-responsive design
-- Existing brochure used as a visual asset
+Main improvements:
+- All-white design
+- Cleaner Manrope + Playfair Display fonts
+- Coach photo placed at the top
+- Coaching and supplements separated into different pages
+- Product images cropped from your original brochure
+- Product prices included
+- Online QR/Razorpay payment flow for coaching and supplements
+- 20% coaching discount remains active
 
-How to preview:
-1. Extract the ZIP.
-2. Open index.html in Safari or Chrome.
+Supplement prices:
+- ON Gold Standard Whey 2.27 kg: ₹9,100
+- MB Biozyme Whey 2 kg: ₹6,300
+- Isopure Zero Carb 2 kg: ₹11,200
+- Dymatize ISO100 2.27 kg: ₹14,800
 
-How the payment flow currently works:
-1. Customer selects a plan.
-2. Customer enters name, email, phone and goal.
-3. A WhatsApp onboarding message opens.
-4. Customer is redirected to your Razorpay payment page.
-
-Important:
-The provided Razorpay link is a general payment page. It does not automatically prefill the exact plan amount or confirm successful payment back to this website. For fully automated payment confirmation, receipts, plan-specific checkout and automatic onboarding emails, you will need one of:
-- Three separate Razorpay Payment Links, one for each plan, or
-- Razorpay Checkout/API integration with a backend and webhook.
-
-Contact details currently used:
-Phone/WhatsApp: +91-7597909942
-Email: h.harshul08@gmail.com
-Instagram: @I_am_hm
-LinkedIn: CA Harshul Mehta
+How to update GitHub:
+1. Unzip Apex_Forge_V4_White_Website.zip.
+2. Open the apex-forge-website repository.
+3. Use Add file > Upload files.
+4. Upload all V4 files, replacing old files.
+5. Upload/replace the assets files.
+6. Commit changes.
+7. Netlify updates automatically.

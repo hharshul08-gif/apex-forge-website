@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head><title>Online Coaching | Apex Forge</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Apex Forge online fitness coaching and authentic supplements across India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">AF</span>
+    <span><strong>Apex Forge</strong><small>Built Strong. Live Limitless.</small></span>
+  </a>
+  <button class="menu-button" aria-label="Open menu">Menu</button>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="coaching.html">Coaching</a>
+    <a href="supplements.html">Supplements</a>
+    <a href="about.html">About Coach</a>
+    <a class="nav-button" href="coaching.html#plans">Start Now</a>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div>
+      <p class="eyebrow">PERSONALIZED ONLINE COACHING</p>
+      <h1>Structure, accountability and progress.</h1>
+      <p>Every program is designed around your body, schedule, food preferences, training experience and goals.</p>
+    </div>
+    <img src="assets/coach-harshul.jpg" alt="Coach Harshul Mehta">
+  </section>
+
+  <section class="content-section">
+    <div class="section-heading">
+      <p class="eyebrow">WHAT YOU RECEIVE</p>
+      <h2>A complete coaching system</h2>
+    </div>
+    <div class="feature-grid">
+      <article><h3>Personal workout plan</h3><p>Progressive training with modifications based on your equipment and experience.</p></article>
+      <article><h3>Nutrition guidance</h3><p>Practical food structure based on your preferences and daily routine.</p></article>
+      <article><h3>Progress tracking</h3><p>Measurements, photos and regular adjustments based on actual results.</p></article>
+      <article><h3>Direct support</h3><p>WhatsApp guidance for accountability, questions and course correction.</p></article>
+    </div>
+  </section>
+
+  <section class="pricing-section" id="plans">
+    <div class="section-heading">
+      <p class="eyebrow">LIMITED-PERIOD OFFER</p>
+      <h2>20% off all coaching plans</h2>
+    </div>
+    <div class="pricing-grid">
+      <article class="price-card">
+        <p class="plan-label">3 MONTHS</p><h3>Foundation</h3>
+        <div class="old-price">₹6,000</div><div class="current-price">₹4,800</div>
+        <span class="sale-pill">20% OFF</span>
+        <ul><li>Personal training plan</li><li>Nutrition guidance</li><li>Progress reviews</li><li>WhatsApp support</li></ul>
+        <button class="button primary pay-button" data-name="3 Months – Foundation Coaching" data-price="₹4,800">Pay & Join</button>
+      </article>
+      <article class="price-card featured">
+        <p class="plan-label">6 MONTHS</p><h3>Transformation</h3>
+        <div class="old-price">₹10,000</div><div class="current-price">₹8,000</div>
+        <span class="sale-pill">MOST POPULAR · 20% OFF</span>
+        <ul><li>Everything in Foundation</li><li>Frequent plan adjustments</li><li>Habit coaching</li><li>Supplement guidance</li></ul>
+        <button class="button primary pay-button" data-name="6 Months – Transformation Coaching" data-price="₹8,000">Pay & Join</button>
+      </article>
+      <article class="price-card">
+        <p class="plan-label">12 MONTHS</p><h3>Elite Lifestyle</h3>
+        <div class="old-price">₹17,000</div><div class="current-price">₹13,600</div>
+        <span class="sale-pill">20% OFF</span>
+        <ul><li>Full-year roadmap</li><li>Advanced progress monitoring</li><li>Long-term habit building</li><li>Priority support</li></ul>
+        <button class="button primary pay-button" data-name="12 Months – Elite Lifestyle Coaching" data-price="₹13,600">Pay & Join</button>
+      </article>
+    </div>
+    <p class="payment-disclaimer">Payment is verified manually through Razorpay/UPI before onboarding begins.</p>
+  </section>
+</main>
+
+<div class="modal" id="paymentModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card">
+    <button class="modal-close" data-close>×</button>
+    <p class="eyebrow">SECURE PAYMENT</p>
+    <h2>Complete your purchase</h2>
+    <div class="purchase-summary">
+      <span id="purchaseName"></span>
+      <strong id="purchasePrice"></strong>
+    </div>
+    <div class="payment-layout">
+      <img src="assets/razorpay-qr.jpeg" alt="Razorpay UPI QR code">
+      <div>
+        <ol>
+          <li>Scan using any UPI app.</li>
+          <li>Enter the exact amount displayed.</li>
+          <li>Save the transaction ID.</li>
+          <li>Continue to WhatsApp for verification.</li>
+        </ol>
+        <button class="button primary full" id="paidButton">I’ve Paid — Continue</button>
+        <a class="button secondary full" href="https://razorpay.me/@harshulmehta" target="_blank">Open Razorpay Page</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer">
+  <div><strong>Apex Forge</strong><p>Online fitness coaching and authentic supplements.</p></div>
+  <div class="footer-links">
+    <a href="tel:+917597909942">+91-7597909942</a>
+    <a href="mailto:h.harshul08@gmail.com">h.harshul08@gmail.com</a>
+    <a href="https://instagram.com/I_am_hm" target="_blank">@I_am_hm</a>
+  </div>
+</footer>
+<a class="whatsapp" href="https://wa.me/917597909942" target="_blank">WhatsApp</a>
+
+<script src="script.js"></script>
+</body></html>

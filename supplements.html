@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head><title>Authentic Supplements | Apex Forge</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Apex Forge online fitness coaching and authentic supplements across India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">AF</span>
+    <span><strong>Apex Forge</strong><small>Built Strong. Live Limitless.</small></span>
+  </a>
+  <button class="menu-button" aria-label="Open menu">Menu</button>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="coaching.html">Coaching</a>
+    <a href="supplements.html">Supplements</a>
+    <a href="about.html">About Coach</a>
+    <a class="nav-button" href="coaching.html#plans">Start Now</a>
+  </nav>
+</header>
+
+<main>
+  <section class="simple-page-head">
+    <p class="eyebrow">AUTHENTIC SUPPLEMENTS</p>
+    <h1>Trusted products. Clear prices.</h1>
+    <p>Factory-sealed supplements with Pan-India shipping. Shipping charges are ₹50–₹100 per kg.</p>
+  </section>
+
+  <section class="products-section">
+    <div class="product-grid">
+      <article class="product-card">
+        <img src="assets/on-gold.jpg" alt="Optimum Nutrition Gold Standard Whey">
+        <h2>ON Gold Standard Whey</h2><p class="product-size">2.27 kg</p>
+        <div class="product-price">₹9,100</div>
+        <p>24g protein, trusted mixability and globally recognized quality.</p>
+        <button class="button primary pay-button" data-name="ON Gold Standard Whey 2.27 kg" data-price="₹9,100">Buy Online</button>
+      </article>
+      <article class="product-card">
+        <img src="assets/mb-biozyme.jpg" alt="MuscleBlaze Biozyme Whey">
+        <h2>MB Biozyme Whey</h2><p class="product-size">2 kg</p>
+        <div class="product-price">₹6,300</div>
+        <p>Clinically tested, strong value and designed for high absorption.</p>
+        <button class="button primary pay-button" data-name="MuscleBlaze Biozyme Whey 2 kg" data-price="₹6,300">Buy Online</button>
+      </article>
+      <article class="product-card">
+        <img src="assets/isopure.jpg" alt="Isopure Zero Carb">
+        <h2>Isopure Zero Carb</h2><p class="product-size">2 kg</p>
+        <div class="product-price">₹11,200</div>
+        <p>100% whey isolate, zero carb and suitable for lean nutrition goals.</p>
+        <button class="button primary pay-button" data-name="Isopure Zero Carb 2 kg" data-price="₹11,200">Buy Online</button>
+      </article>
+      <article class="product-card">
+        <img src="assets/dymatize.jpg" alt="Dymatize ISO100">
+        <h2>Dymatize ISO100</h2><p class="product-size">2.27 kg</p>
+        <div class="product-price">₹14,800</div>
+        <p>Hydrolyzed isolate, fast digestion and premium recovery support.</p>
+        <button class="button primary pay-button" data-name="Dymatize ISO100 2.27 kg" data-price="₹14,800">Buy Online</button>
+      </article>
+    </div>
+
+    <div class="shipping-note">
+      <strong>Before paying:</strong>
+      <span>Confirm flavour and stock availability on WhatsApp. Final shipping charges depend on location and weight.</span>
+      <a href="https://wa.me/917597909942?text=Hi%20Harshul%2C%20please%20confirm%20supplement%20stock%20and%20flavour." target="_blank">Confirm stock</a>
+    </div>
+  </section>
+</main>
+
+<div class="modal" id="paymentModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card">
+    <button class="modal-close" data-close>×</button>
+    <p class="eyebrow">SECURE PAYMENT</p>
+    <h2>Complete your purchase</h2>
+    <div class="purchase-summary">
+      <span id="purchaseName"></span>
+      <strong id="purchasePrice"></strong>
+    </div>
+    <div class="payment-layout">
+      <img src="assets/razorpay-qr.jpeg" alt="Razorpay UPI QR code">
+      <div>
+        <ol>
+          <li>Scan using any UPI app.</li>
+          <li>Enter the exact amount displayed.</li>
+          <li>Save the transaction ID.</li>
+          <li>Continue to WhatsApp for verification.</li>
+        </ol>
+        <button class="button primary full" id="paidButton">I’ve Paid — Continue</button>
+        <a class="button secondary full" href="https://razorpay.me/@harshulmehta" target="_blank">Open Razorpay Page</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer">
+  <div><strong>Apex Forge</strong><p>Online fitness coaching and authentic supplements.</p></div>
+  <div class="footer-links">
+    <a href="tel:+917597909942">+91-7597909942</a>
+    <a href="mailto:h.harshul08@gmail.com">h.harshul08@gmail.com</a>
+    <a href="https://instagram.com/I_am_hm" target="_blank">@I_am_hm</a>
+  </div>
+</footer>
+<a class="whatsapp" href="https://wa.me/917597909942" target="_blank">WhatsApp</a>
+
+<script src="script.js"></script>
+</body></html>
