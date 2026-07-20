@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<defs>
+<linearGradient id="bg" x1="0" x2="1"><stop offset="0" stop-color="#050505"/><stop offset=".6" stop-color="#111"/><stop offset="1" stop-color="#2a1a00"/></linearGradient>
+<radialGradient id="glow" cx="78%" cy="40%" r="48%"><stop offset="0" stop-color="#f6ad00" stop-opacity=".42"/><stop offset="1" stop-color="#f6ad00" stop-opacity="0"/></radialGradient>
+<linearGradient id="metal" x1="0" x2="1"><stop offset="0" stop-color="#242424"/><stop offset=".5" stop-color="#888"/><stop offset="1" stop-color="#222"/></linearGradient>
+</defs>
+<rect width="1600" height="900" fill="url(#bg)"/><rect width="1600" height="900" fill="url(#glow)"/>
+<g opacity=".12" stroke="#fff"><path d="M0 180H1600M0 360H1600M0 540H1600M0 720H1600"/><path d="M220 0V900M440 0V900M660 0V900M880 0V900M1100 0V900M1320 0V900"/></g>
+<g transform="translate(1120 450)">
+<circle r="250" fill="none" stroke="#f6ad00" stroke-width="4" opacity=".28"/>
+<circle r="170" fill="none" stroke="#f6ad00" stroke-width="2" opacity=".2"/>
+<g fill="url(#metal)">
+<rect x="-250" y="-22" width="500" height="44" rx="22"/>
+<rect x="-325" y="-62" width="55" height="124" rx="14"/>
+<rect x="-395" y="-92" width="48" height="184" rx="14"/>
+<rect x="270" y="-62" width="55" height="124" rx="14"/>
+<rect x="347" y="-92" width="48" height="184" rx="14"/>
+</g></g>
+<text x="930" y="780" fill="#f6ad00" opacity=".16" font-size="92" font-family="Arial" font-weight="900">DISCIPLINE</text>
+</svg>
