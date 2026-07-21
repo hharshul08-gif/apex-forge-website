@@ -1,28 +1,25 @@
-BUILT BEYOND — FINAL STATIC WEBSITE
+BUILT BEYOND — FINAL WEBSITE PACKAGE
 
-Main file: index.html
-Custom domain: builtbeyond.fit
-Hosting: Netlify via GitHub
+IMPORTANT: Upload every file in this folder directly to the ROOT of your GitHub repository.
+Do not upload an outer folder. index.html must be visible on the repository's first screen.
 
-Included:
-- Premium responsive homepage
-- New Built Beyond SVG logo and favicon
-- Coach photo
-- Three live Razorpay coaching links
-- Top-selling supplement cards and WhatsApp enquiry flow
-- Full catalogue WhatsApp button
-- Working BMR and calorie calculator
-- Client assessment form using FormSubmit
-- Thank-you page
+This version intentionally keeps images in the root to prevent the broken-logo/image issue caused by uploading the assets folder incorrectly.
+The Built Beyond logo is embedded directly in the HTML, so it cannot break due to a missing image path.
 
 DEPLOYMENT
-1. Upload every file and the assets folder to the ROOT of your GitHub repository.
-2. Commit the changes.
-3. Netlify will deploy automatically.
-4. Test all payment links, WhatsApp buttons, calculator and form.
+1. In GitHub, delete or replace the old website files.
+2. Upload all files from this folder together.
+3. Commit with message: Built Beyond final brand launch
+4. Netlify will deploy automatically.
+5. Open https://builtbeyond.fit in a private window after Netlify shows Published.
 
-IMPORTANT ABOUT FORM SUBMISSION
-The first FormSubmit submission may send an activation email to h.harshul08@gmail.com. Open it and confirm activation.
+PAYMENT LINKS
+3 months: https://rzp.io/rzp/OqV569O
+6 months: https://rzp.io/rzp/w1gHBEhp
+12 months: https://rzp.io/rzp/Hhc10w8B
 
-SUPPLEMENT PAYMENTS
-Because prices, flavours, stock and shipping vary, supplement buttons open WhatsApp to confirm the final payable amount. Use a Razorpay payment link created for the final confirmed amount.
+ASSESSMENT
+The assessment uses Netlify Forms. After deployment, submit one test response and check Netlify > Forms.
+
+DOMAIN
+builtbeyond.fit is the canonical domain. The old Netlify URL is redirected using the _redirects file.
