@@ -1,34 +1,28 @@
-APEX FORGE V4 — WHITE MULTI-PAGE WEBSITE
+BUILT BEYOND — FINAL STATIC WEBSITE
 
-Pages:
-- index.html — short home page
-- coaching.html — coaching details and pricing
-- supplements.html — supplement products and prices
-- about.html — Coach Harshul profile
-- assessment.html — existing assessment form
-- thank-you.html — assessment confirmation
+Main file: index.html
+Custom domain: builtbeyond.fit
+Hosting: Netlify via GitHub
 
-Main improvements:
-- All-white design
-- Cleaner Manrope + Playfair Display fonts
-- Coach photo placed at the top
-- Coaching and supplements separated into different pages
-- Product images cropped from your original brochure
-- Product prices included
-- Online QR/Razorpay payment flow for coaching and supplements
-- 20% coaching discount remains active
+Included:
+- Premium responsive homepage
+- New Built Beyond SVG logo and favicon
+- Coach photo
+- Three live Razorpay coaching links
+- Top-selling supplement cards and WhatsApp enquiry flow
+- Full catalogue WhatsApp button
+- Working BMR and calorie calculator
+- Client assessment form using FormSubmit
+- Thank-you page
 
-Supplement prices:
-- ON Gold Standard Whey 2.27 kg: ₹9,100
-- MB Biozyme Whey 2 kg: ₹6,300
-- Isopure Zero Carb 2 kg: ₹11,200
-- Dymatize ISO100 2.27 kg: ₹14,800
+DEPLOYMENT
+1. Upload every file and the assets folder to the ROOT of your GitHub repository.
+2. Commit the changes.
+3. Netlify will deploy automatically.
+4. Test all payment links, WhatsApp buttons, calculator and form.
 
-How to update GitHub:
-1. Unzip Apex_Forge_V4_White_Website.zip.
-2. Open the apex-forge-website repository.
-3. Use Add file > Upload files.
-4. Upload all V4 files, replacing old files.
-5. Upload/replace the assets files.
-6. Commit changes.
-7. Netlify updates automatically.
+IMPORTANT ABOUT FORM SUBMISSION
+The first FormSubmit submission may send an activation email to h.harshul08@gmail.com. Open it and confirm activation.
+
+SUPPLEMENT PAYMENTS
+Because prices, flavours, stock and shipping vary, supplement buttons open WhatsApp to confirm the final payable amount. Use a Razorpay payment link created for the final confirmed amount.

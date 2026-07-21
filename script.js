@@ -1,17 +1,3 @@
-
-const menuButton=document.querySelector(".menu-button"),nav=document.querySelector(".site-nav");
-if(menuButton){menuButton.addEventListener("click",()=>nav.classList.toggle("open"))}
-const modal=document.getElementById("paymentModal");
-let currentName="",currentPrice="";
-document.querySelectorAll(".pay-button").forEach(btn=>btn.addEventListener("click",()=>{
- currentName=btn.dataset.name;currentPrice=btn.dataset.price;
- document.getElementById("purchaseName").textContent=currentName;
- document.getElementById("purchasePrice").textContent=currentPrice;
- modal.classList.add("active");modal.setAttribute("aria-hidden","false");
-}));
-document.querySelectorAll("[data-close]").forEach(x=>x.addEventListener("click",()=>{modal.classList.remove("active");modal.setAttribute("aria-hidden","true")}));
-const paid=document.getElementById("paidButton");
-if(paid){paid.addEventListener("click",()=>{
- const message=`Hi Harshul, I have paid for ${currentName} (${currentPrice}). Please verify my payment and guide me on the next step.`;
- window.open(`https://wa.me/917597909942?text=${encodeURIComponent(message)}`,"_blank");
-})}
+const menu=document.querySelector('.menu');const nav=document.querySelector('.nav');if(menu)menu.addEventListener('click',()=>nav.classList.toggle('open'));
+const form=document.getElementById('bmrForm');
+if(form){form.addEventListener('submit',e=>{e.preventDefault();const sex=form.sex.value;const age=Number(form.age.value);const height=Number(form.height.value);const weight=Number(form.weight.value);const factor=Number(form.activity.value);if(!age||!height||!weight)return;const bmr=sex==='male'?10*weight+6.25*height-5*age+5:10*weight+6.25*height-5*age-161;const maintenance=bmr*factor;document.getElementById('bmrValue').textContent=Math.round(bmr)+' kcal';document.getElementById('maintValue').textContent=Math.round(maintenance)+' kcal';document.getElementById('lossValue').textContent=Math.round(maintenance-400)+'–'+Math.round(maintenance-250)+' kcal';document.getElementById('gainValue').textContent=Math.round(maintenance+200)+'–'+Math.round(maintenance+350)+' kcal';document.getElementById('calcResult').classList.add('show');});}
