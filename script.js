@@ -145,6 +145,7 @@
       const weight = Number(d.get('weight'));
       const activity = Number(d.get('activity'));
       const goal = d.get('goal');
+      const trainingMultiplier = Number(d.get('training'));
       const diet = d.get('diet');
       const meals = Number(d.get('meals'));
       const whey = d.get('whey') === 'on';
@@ -154,7 +155,8 @@
       const floor = sex === 'male' ? 1500 : 1200;
       const multiplier = goal === 'loss' ? 0.82 : goal === 'gain' ? 1.08 : 1;
       const calories = Math.max(floor, Math.round(maintenance * multiplier / 25) * 25);
-      const protein = Math.round(weight * (goal === 'gain' ? 1.9 : 1.8));
+      const protein = Math.round(weight * trainingMultiplier);
+      const proteinBasis = trainingMultiplier === 2 ? '2.0 g/kg · heavy gym-goer' : `${trainingMultiplier.toFixed(1)} g/kg · based on training`;
       const fat = Math.max(Math.round(weight * 0.7), Math.round((calories * 0.25) / 9));
       const carbs = Math.max(50, Math.round((calories - protein*4 - fat*9) / 4));
       const bmi = weight / ((height/100) ** 2);
@@ -170,6 +172,7 @@
       $('#npGoalLabel').textContent = goalLabel;
       $('#npWater').textContent = water;
       $('#npProtein').textContent = `${protein} g`;
+      $('#npProteinBasis').textContent = proteinBasis;
       $('#npCarbs').textContent = `${carbs} g`;
       $('#npFat').textContent = `${fat} g`;
       $('#npTotal').textContent = `${calories.toLocaleString('en-IN')} kcal`;

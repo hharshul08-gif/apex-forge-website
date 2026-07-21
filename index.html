@@ -71,7 +71,7 @@
     <div class="shell">
       <div class="section-heading split reveal">
         <div><p class="kicker light">Free Built Beyond Diet Tool</p><h2>Know your calories. Get a practical sample diet.</h2></div>
-        <p>Calculate BMI, maintenance calories and daily macros, then generate one sample Indian meal plan based on your vegetarian, eggitarian or non-vegetarian preference.</p>
+        <p>Answer a few practical questions, receive an appropriate protein target, and generate one sample Indian meal plan based on your age bracket, gender, training frequency and food preference.</p>
       </div>
 
       <div class="planner-shell reveal">
@@ -84,7 +84,7 @@
             <p class="step-copy">These details are calculated only in your browser and are not sent to Built Beyond.</p>
             <div class="planner-grid">
               <label><span>Sex</span><select name="sex" required><option value="male">Male</option><option value="female">Female</option></select></label>
-              <label><span>Age</span><input name="age" type="number" min="18" max="80" placeholder="35" required></label>
+              <label><span>Age bracket</span><select name="age" required><option value="22">18–25</option><option value="30">26–35</option><option value="40" selected>36–45</option><option value="50">46–55</option><option value="60">56–65</option><option value="70">66+</option></select></label>
               <label><span>Height (cm)</span><input name="height" type="number" min="130" max="220" placeholder="175" required></label>
               <label><span>Weight (kg)</span><input name="weight" type="number" min="40" max="220" step="0.1" placeholder="75" required></label>
             </div>
@@ -93,7 +93,8 @@
           <fieldset class="planner-step" data-step="2">
             <legend>Choose your goal and routine</legend>
             <div class="planner-grid">
-              <label class="wide"><span>Activity level</span><select name="activity" required><option value="1.2">Sedentary — little exercise</option><option value="1.375">Light — 1–3 sessions/week</option><option value="1.55" selected>Moderate — 3–5 sessions/week</option><option value="1.725">Very active — 6–7 sessions/week</option></select></label>
+              <label class="wide"><span>Daily activity level</span><select name="activity" required><option value="1.2">Sedentary — mostly desk-based</option><option value="1.375">Lightly active — some walking</option><option value="1.55" selected>Moderately active — regular movement</option><option value="1.725">Very active — highly physical routine</option></select></label>
+              <label class="wide"><span>Resistance training frequency</span><select name="training" required><option value="1">No weight training</option><option value="1.2">1–3 sessions/week</option><option value="1.5" selected>4–5 sessions/week</option><option value="2">6+ demanding sessions/week — heavy gym-goer</option></select><small class="field-help">Protein is set at 1.0–1.5 g/kg for most users and 2.0 g/kg only for heavy gym-goers.</small></label>
               <label><span>Goal</span><select name="goal" required><option value="loss">Fat loss</option><option value="maintain">Maintenance</option><option value="gain">Lean gain</option></select></label>
               <label><span>Meals per day</span><select name="meals"><option value="3">3 meals</option><option value="4" selected>4 meals</option><option value="5">5 meals</option></select></label>
             </div>
@@ -123,7 +124,7 @@
             <article><span>Water</span><strong id="npWater">—</strong><small>litres/day</small></article>
           </div>
           <div class="macro-bar" aria-label="Daily macro targets">
-            <div><span>Protein</span><strong id="npProtein">—</strong></div><div><span>Carbohydrates</span><strong id="npCarbs">—</strong></div><div><span>Fats</span><strong id="npFat">—</strong></div><div><span>Total calories</span><strong id="npTotal">—</strong></div>
+            <div><span>Protein</span><strong id="npProtein">—</strong><small id="npProteinBasis">—</small></div><div><span>Carbohydrates</span><strong id="npCarbs">—</strong></div><div><span>Fats</span><strong id="npFat">—</strong></div><div><span>Total calories</span><strong id="npTotal">—</strong></div>
           </div>
           <div class="plan-meta"><span id="npDietLabel">—</span><span id="npMealsLabel">—</span><span>Indian sample plan</span></div>
           <div class="meal-table-wrap"><table class="meal-table"><thead><tr><th>Meal</th><th>Suggested foods & quantity</th><th>Protein</th><th>Carbs</th><th>Fat</th><th>Calories</th></tr></thead><tbody id="mealPlanBody"></tbody><tfoot><tr><th colspan="2">Estimated daily total</th><th id="mealProtein">—</th><th id="mealCarbs">—</th><th id="mealFat">—</th><th id="mealCalories">—</th></tr></tfoot></table></div>

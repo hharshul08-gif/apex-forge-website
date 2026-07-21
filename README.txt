@@ -18,3 +18,9 @@ This version keeps your existing Razorpay-hosted payment links. It contains no R
 
 IMPORTANT
 The diet plan is educational and is not medical advice. Test the planner on desktop and mobile after deployment.
+
+V4.1 nutrition update:
+- Age bracket and gender inputs
+- Resistance-training frequency question
+- Protein set at 1.0, 1.2 or 1.5 g/kg for most users
+- 2.0 g/kg reserved for users selecting 6+ demanding gym sessions/week
