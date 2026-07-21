@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Journey | Built Beyond</title>
+  <meta name="description" content="Track your Built Beyond coaching plan start date, end date, days completed and days remaining.">
+  <meta name="theme-color" content="#f6f7f3">
+  <link rel="canonical" href="https://builtbeyond.fit/my-journey.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="journey-page">
+<header class="site-header">
+  <div class="shell nav-wrap">
+    <a class="brand" href="index.html" aria-label="Built Beyond home">
+      <svg class="brand-mark" viewBox="0 0 60 60" aria-hidden="true"><path d="M9 46 25 14h9L18 46H9Z"/><path d="M28 46 44 14h9L37 46h-9Z"/><path d="M18 38h23l-4 8H14l4-8Z"/></svg>
+      <span><strong>BUILT BEYOND</strong><small>Built for Busy Professionals.</small></span>
+    </a>
+    <a class="btn secondary compact-btn" href="index.html">Back to website</a>
+  </div>
+</header>
+<main>
+  <section class="journey-hero">
+    <div class="shell journey-intro">
+      <p class="kicker">Client plan tracker</p>
+      <h1>My Journey</h1>
+      <p>Enter your plan and activation date once. Your end date, progress and remaining days will update automatically.</p>
+    </div>
+  </section>
+
+  <section class="journey-dashboard-section">
+    <div class="shell dashboard-grid">
+      <aside class="journey-setup-card">
+        <p class="kicker">Plan setup</p>
+        <h2>Set up your coaching cycle</h2>
+        <form id="journeyForm" class="journey-form">
+          <label><span>Your name</span><input id="clientName" type="text" placeholder="e.g. Harshul" autocomplete="name"></label>
+          <label><span>Coaching plan</span><select id="planType"><option value="12">Foundation · 12 weeks</option><option value="24">Momentum · 24 weeks</option><option value="52">Transformation · 52 weeks</option></select></label>
+          <label><span>Plan start date</span><input id="startDate" type="date" required></label>
+          <button class="btn primary full" type="submit">Save my journey</button>
+          <button class="journey-reset" id="resetJourney" type="button">Clear saved details</button>
+        </form>
+        <div class="privacy-note"><strong>Private by design</strong><p>Your details are saved only in this browser on this device. This version does not create an online client account.</p></div>
+      </aside>
+
+      <div class="journey-dashboard" id="journeyDashboard" aria-live="polite">
+        <div class="journey-welcome">
+          <div><p class="kicker">Your coaching cycle</p><h2 id="welcomeTitle">Welcome to Built Beyond.</h2><p id="journeyMessage">Set your plan details to begin tracking your journey.</p></div>
+          <span class="status-pill" id="statusPill">Not started</span>
+        </div>
+
+        <div class="journey-stat-grid">
+          <article><span>Plan</span><strong id="planLabel">—</strong><small id="planLength">Select your coaching plan</small></article>
+          <article><span>Start date</span><strong id="startDisplay">—</strong><small>Your activation date</small></article>
+          <article><span>End date</span><strong id="endDisplay">—</strong><small>Calculated automatically</small></article>
+          <article><span>Days remaining</span><strong id="remainingDisplay">—</strong><small id="remainingNote">Until plan completion</small></article>
+        </div>
+
+        <div class="progress-panel">
+          <div class="progress-heading"><div><span>Overall progress</span><strong id="progressPercent">0%</strong></div><p id="dayCounter">0 of 0 days completed</p></div>
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressBar"><span id="progressFill"></span></div>
+          <div class="milestone-row"><span>Start</span><span id="currentWeek">Week —</span><span>Finish</span></div>
+        </div>
+
+        <div class="journey-actions">
+          <a class="btn primary" href="https://wa.me/917597909942?text=Hi%20Harshul%2C%20I%20would%20like%20to%20discuss%20my%20Built%20Beyond%20coaching%20journey." target="_blank" rel="noopener">Message your coach</a>
+          <a class="btn secondary" href="assessment.html">Update assessment</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="footer journey-footer"><div class="shell copyright">© <span id="year"></span> Built Beyond. Your dates are estimates based on the selected weekly coaching cycle.</div></footer>
+<script src="journey.js"></script>
+</body>
+</html>
