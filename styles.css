@@ -25,3 +25,6 @@
 @media(max-width:760px){.instagram-qr{width:104px;height:132px}}
 
 .service-notice{margin-top:28px;padding:18px 22px;border:1px solid #dce4ea;border-radius:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;background:#f8fafb}.service-notice strong{color:#111}.service-notice span{color:#53606a}
+
+/* Built Beyond 1.0 global coaching and FAQ */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:980px;margin:auto}.faq-item{background:#fff;border:1px solid var(--line);border-radius:20px;padding:0 22px}.faq-item summary{cursor:pointer;list-style:none;font:700 17px "Manrope";padding:22px 34px 22px 0;position:relative}.faq-item summary::-webkit-details-marker{display:none}.faq-item summary:after{content:"+";position:absolute;right:0;top:18px;font-size:25px;font-weight:500}.faq-item[open] summary:after{content:"–"}.faq-item p{margin:0;padding:0 0 22px;color:var(--muted)}@media(max-width:760px){.faq-grid{grid-template-columns:1fr}}

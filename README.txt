@@ -1,3 +1,7 @@
+BUILT BEYOND 1.0 — WORLDWIDE ONLINE COACHING EDITION
+
+This deployable version includes updated About copy, worldwide online-coaching messaging, open target-audience categories and a full FAQ section. Existing Razorpay Payment Links remain unchanged.
+
 BUILT BEYOND V4.3 — RAZORPAY REVIEW EDITION
 
 Purpose:
