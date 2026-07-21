@@ -62,7 +62,7 @@
         meals: [
           ['Breakfast', 'Paneer bhurji, multigrain bread and one fruit'],
           ['Lunch', 'Paneer or soya, rice/roti, dal and 200 g green vegetables'],
-          ['Evening', 'Whey or curd, fruit and a small portion of nuts'],
+          ['Evening', 'High-protein curd, fruit and a small portion of nuts'],
           ['Dinner', 'Paneer/tofu, rice/roti, curd and green vegetables'],
           ['Before bed', 'Curd or milk with optional isabgol']
         ]
@@ -72,7 +72,7 @@
         meals: [
           ['Breakfast', 'Whole eggs, multigrain bread and one fruit'],
           ['Lunch', 'Egg curry, dal, rice/roti and 200 g green vegetables'],
-          ['Evening', 'Whey or curd, fruit and a cheese slice'],
+          ['Evening', 'High-protein curd, fruit and a cheese slice'],
           ['Dinner', 'Eggs or paneer, rice/roti, curd and green vegetables'],
           ['Before bed', 'Curd or milk with optional isabgol']
         ]
@@ -82,7 +82,7 @@
         meals: [
           ['Breakfast', 'Whole eggs, multigrain bread and one fruit'],
           ['Lunch', 'Chicken breast, dal, rice/roti and 200 g green vegetables'],
-          ['Evening', 'Whey or curd, fruit and a cheese slice'],
+          ['Evening', 'High-protein curd, fruit and a cheese slice'],
           ['Dinner', 'Chicken breast, rice/roti, curd and green vegetables'],
           ['Before bed', 'Curd or milk with optional isabgol']
         ]
@@ -111,7 +111,7 @@
         .replace(/one fruit/g, `one fruit (~${fruit} g)`)
         .replace(/rice\/roti/g, `${rice} g uncooked rice/atta`)
         .replace(/curd/g, `curd (${curd} g)`);
-      if (!whey) text = text.replace(/Whey or /g, '').replace(/Whey/g, 'High-protein curd');
+      text = text.replace(/Whey or /g, '').replace(/Whey/g, 'High-protein curd');
       return text;
     }
 
@@ -148,7 +148,7 @@
       const trainingMultiplier = Number(d.get('training'));
       const diet = d.get('diet');
       const meals = Number(d.get('meals'));
-      const whey = d.get('whey') === 'on';
+      const whey = false;
 
       const bmr = 10*weight + 6.25*height - 5*age + (sex === 'male' ? 5 : -161);
       const maintenance = Math.round(bmr * activity);

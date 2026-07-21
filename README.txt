@@ -1,26 +1,19 @@
-BUILT BEYOND V4 — DEPLOYMENT
+BUILT BEYOND V4.3 — RAZORPAY REVIEW EDITION
 
-WHAT IS NEW
-- Free 3-step sample diet tool
-- BMI, maintenance calories, suggested calories and macros
-- Vegetarian, eggitarian and non-vegetarian choices
-- 3, 4 or 5 meal sample plans
-- Print / Save as PDF
-- No personal information is submitted or stored by the planner
-- Strong Netlify browser security headers
-- Shipping policy added
+Purpose:
+- Positions Built Beyond exclusively as an online fitness and nutrition coaching service.
+- Removes all physical supplement sales, catalogue links, product pricing and shipping claims.
+- Keeps clear coaching descriptions and INR pricing.
+- Adds Contact Us, Terms, Privacy, Cancellation & Refund, and Service Delivery policies.
+- Uses Razorpay-hosted Payment Links only; no API keys or payment secrets are stored in the website.
 
-DEPLOY
-Upload every file in this folder to the ROOT of your GitHub repository. Netlify will redeploy automatically.
+Deployment:
+Upload every file in this folder to the root of your GitHub repository and deploy through Netlify.
 
-PAYMENTS
-This version keeps your existing Razorpay-hosted payment links. It contains no Razorpay API key or secret.
+Before Razorpay resubmission:
+1. Confirm the live site shows no supplement products or catalogue links.
+2. Open every footer policy link and confirm it loads.
+3. Test all three coaching payment links.
+4. Submit https://builtbeyond.fit as an online fitness and nutrition coaching service.
 
-IMPORTANT
-The diet plan is educational and is not medical advice. Test the planner on desktop and mobile after deployment.
-
-V4.1 nutrition update:
-- Age bracket and gender inputs
-- Resistance-training frequency question
-- Protein set at 1.0, 1.2 or 1.5 g/kg for most users
-- 2.0 g/kg reserved for users selecting 6+ demanding gym sessions/week
+Approval remains Razorpay's decision and cannot be guaranteed.
