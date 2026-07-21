@@ -1,20 +1,20 @@
-BUILT BEYOND V3 — DEPLOYMENT
+BUILT BEYOND V4 — DEPLOYMENT
 
-1. Extract this ZIP.
-2. Upload every file inside this folder directly to the root of your GitHub repository.
-3. Do not upload the outer folder itself.
-4. Commit the changes. Netlify will deploy automatically.
-5. Confirm https://builtbeyond.fit after Netlify shows “Published”.
+WHAT IS NEW
+- Free 3-step sample diet tool
+- BMI, maintenance calories, suggested calories and macros
+- Vegetarian, eggitarian and non-vegetarian choices
+- 3, 4 or 5 meal sample plans
+- Print / Save as PDF
+- No personal information is submitted or stored by the planner
+- Strong Netlify browser security headers
+- Shipping policy added
 
-Payment links already connected:
-₹4,800 — https://rzp.io/rzp/OqV569O
-₹8,000 — https://rzp.io/rzp/w1gHBEhp
-₹13,600 — https://rzp.io/rzp/Hhc10w8B
+DEPLOY
+Upload every file in this folder to the ROOT of your GitHub repository. Netlify will redeploy automatically.
 
-Before public promotion, review the legal pages and adjust any business terms you want.
+PAYMENTS
+This version keeps your existing Razorpay-hosted payment links. It contains no Razorpay API key or secret.
 
-
-MY JOURNEY FEATURE
-- my-journey.html lets clients choose their 12, 24 or 52-week plan and start date.
-- End date, days remaining, current week and progress update automatically.
-- Data is stored privately in the visitor's browser using localStorage; no login/backend is included.
+IMPORTANT
+The diet plan is educational and is not medical advice. Test the planner on desktop and mobile after deployment.
