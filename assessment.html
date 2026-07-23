@@ -56,8 +56,8 @@
 <div class="container">
     <h2>Built Beyond Intake Assessment</h2>
     
-    <!-- Notice method="GET" to allow GitHub Pages static navigation without 405 error -->
-    <form action="payment.html" method="GET">
+    <!-- JavaScript handles redirect to prevent any HTTP 405 Method errors -->
+    <form id="assessmentForm" onsubmit="handleFormSubmit(event)">
         <div class="form-group">
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" required placeholder="John Doe">
@@ -87,7 +87,19 @@
 </div>
 
 <script>
-    // Automatically select plan if passed in the URL (e.g. assessment.html?plan=momentum)
+    // Handle form submit via JS redirect
+    function handleFormSubmit(event) {
+        event.preventDefault(); // Stop standard HTTP submission
+        
+        const plan = document.getElementById('plan').value;
+        const name = encodeURIComponent(document.getElementById('name').value);
+        const email = encodeURIComponent(document.getElementById('email').value);
+        
+        // Redirect cleanly to payment page with query params
+        window.location.href = `payment.html?plan=${plan}&name=${name}&email=${email}`;
+    }
+
+    // Auto-select plan from URL if present (e.g., assessment.html?plan=momentum)
     window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
         const planParam = urlParams.get('plan');
