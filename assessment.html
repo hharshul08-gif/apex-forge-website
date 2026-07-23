@@ -33,7 +33,7 @@
   .checkout-section {
     display: none;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   .plan-button-container {
     display: none;
@@ -80,13 +80,14 @@
 
 <main class="shell">
   <div class="assessment-container">
+    <!-- STEP 1: Assessment Form -->
     <div id="assessmentFormBlock">
       <p class="kicker">Step 1 of 2</p>
       <h2>Client Assessment Form</h2>
       <p style="margin-bottom: 2rem; opacity: 0.85;">Please fill out your details prior to selecting and finalizing your coaching package.</p>
       
-      <!-- Hidden form-name input required for Netlify AJAX submissions -->
-      <form id="assessmentForm" name="client-assessment" method="POST" data-netlify="true">
+      <!-- Native Netlify Form Action redirecting back to step=payment -->
+      <form id="assessmentForm" name="client-assessment" method="POST" action="assessment.html?step=payment" data-netlify="true">
         <input type="hidden" name="form-name" value="client-assessment" />
         
         <div class="form-group">
@@ -117,11 +118,11 @@
       </form>
     </div>
 
-    <!-- STEP 2: Checkout & Enrollment Confirmation Block -->
+    <!-- STEP 2: Payment Section (Unlocked after Netlify redirects here) -->
     <div id="checkoutBlock" class="checkout-section">
       <p class="kicker">Step 2 of 2</p>
       <h2>Complete Your Enrollment</h2>
-      <p style="margin-bottom: 1.5rem; opacity: 0.85;">Your assessment details have been saved successfully. Please click below to complete your payment.</p>
+      <p style="margin-bottom: 1.5rem; opacity: 0.85;">Your assessment details have been saved successfully. Please complete your payment below to finalize enrollment.</p>
 
       <!-- Foundation Plan Button -->
       <div id="btn-foundation" class="plan-button-container">
@@ -181,6 +182,9 @@
 <script>
   const urlParams = new URLSearchParams(window.location.search);
   const planParam = urlParams.get('plan');
+  const stepParam = urlParams.get('step');
+  const statusParam = urlParams.get('status');
+
   if (planParam && document.getElementById('selectedPlan')) {
     document.getElementById('selectedPlan').value = planParam;
   }
@@ -191,55 +195,33 @@
     'transformation': { name: 'Transformation Plan', tenure: '52 Weeks' }
   };
 
-  const form = document.getElementById('assessmentForm');
-  
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const submitBtn = document.getElementById('submitBtn');
-    submitBtn.textContent = 'Saving Assessment...';
-    submitBtn.disabled = true;
-
-    const formData = new FormData(form);
+  // Save selected plan and date locally before form submission sends user off
+  document.getElementById('assessmentForm').addEventListener('submit', function() {
     const chosenPlan = document.getElementById('selectedPlan').value;
-    
     const currentDate = new Date().toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     });
-    
     localStorage.setItem('bb_enrollment_date', currentDate);
     localStorage.setItem('bb_enrollment_plan', chosenPlan);
-
-    // Send Form Data to Netlify via AJAX (Background submission)
-    fetch('/', {
-      method: 'POST',
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString()
-    })
-    .then(() => {
-      // Show Razorpay Step 2
-      document.getElementById('assessmentFormBlock').style.display = 'none';
-      document.getElementById('checkoutBlock').style.display = 'block';
-
-      document.querySelectorAll('.plan-button-container').forEach(el => el.style.display = 'none');
-      if (document.getElementById('btn-' + chosenPlan)) {
-        document.getElementById('btn-' + chosenPlan).style.display = 'block';
-      }
-    })
-    .catch((error) => {
-      // Fallback display if offline/error
-      document.getElementById('assessmentFormBlock').style.display = 'none';
-      document.getElementById('checkoutBlock').style.display = 'block';
-      if (document.getElementById('btn-' + chosenPlan)) {
-        document.getElementById('btn-' + chosenPlan).style.display = 'block';
-      }
-    });
   });
 
-  // Handle post-payment return
-  if (urlParams.get('status') === 'enrolled') {
+  // STEP 2: Handle redirect back from Netlify form submission
+  if (stepParam === 'payment') {
+    document.getElementById('assessmentFormBlock').style.display = 'none';
+    document.getElementById('checkoutBlock').style.display = 'block';
+
+    const activePlan = localStorage.getItem('bb_enrollment_plan') || planParam || 'foundation';
+    
+    document.querySelectorAll('.plan-button-container').forEach(el => el.style.display = 'none');
+    if (document.getElementById('btn-' + activePlan)) {
+      document.getElementById('btn-' + activePlan).style.display = 'block';
+    }
+  }
+
+  // STEP 3: Handle post-payment confirmation return
+  if (statusParam === 'enrolled') {
     document.getElementById('assessmentFormBlock').style.display = 'none';
     document.getElementById('checkoutBlock').style.display = 'none';
     document.getElementById('enrolledBlock').style.display = 'block';
