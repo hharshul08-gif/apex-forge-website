@@ -1,23 +1,22 @@
-BUILT BEYOND 1.0 — WORLDWIDE ONLINE COACHING EDITION
+BUILT BEYOND — LAUNCH PACKAGE
 
-This deployable version includes updated About copy, worldwide online-coaching messaging, open target-audience categories and a full FAQ section. Existing Razorpay Payment Links remain unchanged.
+QUICK LAUNCH (NETLIFY)
+1. Log in to Netlify.
+2. Drag this entire folder into Netlify Drop, or upload the ZIP.
+3. Connect your custom domain builtbeyond.fit.
+4. Test all Razorpay coaching links and WhatsApp supplement links.
 
-BUILT BEYOND V4.3 — RAZORPAY REVIEW EDITION
+WHAT IS INCLUDED
+- Responsive premium homepage
+- Three renamed coaching plans with equal inclusions
+- Health & Lifestyle coaching process
+- Upgraded diet tool: BMR, maintenance, macros, 10% fat-loss deficit (never below BMR), 15% muscle-gain surplus
+- Separate supplements catalogue with WhatsApp enquiry only
+- Founder story, FAQs and legal pages
+- SEO metadata, sitemap, robots and Netlify redirects
 
-Purpose:
-- Positions Built Beyond exclusively as an online fitness and nutrition coaching service.
-- Removes all physical supplement sales, catalogue links, product pricing and shipping claims.
-- Keeps clear coaching descriptions and INR pricing.
-- Adds Contact Us, Terms, Privacy, Cancellation & Refund, and Service Delivery policies.
-- Uses Razorpay-hosted Payment Links only; no API keys or payment secrets are stored in the website.
-
-Deployment:
-Upload every file in this folder to the root of your GitHub repository and deploy through Netlify.
-
-Before Razorpay resubmission:
-1. Confirm the live site shows no supplement products or catalogue links.
-2. Open every footer policy link and confirm it loads.
-3. Test all three coaching payment links.
-4. Submit https://builtbeyond.fit as an online fitness and nutrition coaching service.
-
-Approval remains Razorpay's decision and cannot be guaranteed.
+IMPORTANT BEFORE GOING LIVE
+- Confirm prices, payment links and WhatsApp number.
+- Confirm supplement stock and current pricing before accepting orders.
+- Coaching is paid through Razorpay. Supplements are enquiry-only and remain separate.
+- Replace any photos later by keeping the same filenames.
