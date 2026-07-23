@@ -153,3 +153,10 @@
   border-radius: 20px;
   overflow: hidden;
 }
+
+.hero-v2-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
