@@ -86,8 +86,8 @@
       <h2>Client Assessment Form</h2>
       <p style="margin-bottom: 2rem; opacity: 0.85;">Please fill out your details prior to selecting and finalizing your coaching package.</p>
       
-      <!-- Explicit action path leading to /assessment.html?step=payment -->
-      <form id="assessmentForm" name="client-assessment" method="POST" action="/assessment.html?step=payment" data-netlify="true">
+      <!-- Hidden static form for Netlify form detection -->
+      <form id="assessmentForm" name="client-assessment" method="POST" data-netlify="true">
         <input type="hidden" name="form-name" value="client-assessment" />
         
         <div class="form-group">
@@ -143,7 +143,7 @@
       </div>
     </div>
 
-    <!-- ENROLLED STATUS BLOCK (Shown after payment redirect) -->
+    <!-- ENROLLED STATUS BLOCK -->
     <div id="enrolledBlock" style="display: none; text-align: center; padding: 1rem 0;">
       <span class="enrolled-badge">✓ ENROLLED & ACTIVE</span>
       <h2>Welcome to Built Beyond!</h2>
@@ -182,7 +182,6 @@
 <script>
   const urlParams = new URLSearchParams(window.location.search);
   const planParam = urlParams.get('plan');
-  const stepParam = urlParams.get('step');
   const statusParam = urlParams.get('status');
 
   if (planParam && document.getElementById('selectedPlan')) {
@@ -195,32 +194,55 @@
     'transformation': { name: 'Transformation Plan', tenure: '52 Weeks' }
   };
 
-  // Save selection before submission
-  document.getElementById('assessmentForm').addEventListener('submit', function() {
+  const form = document.getElementById('assessmentForm');
+
+  function showPaymentStep(chosenPlan) {
+    document.getElementById('assessmentFormBlock').style.display = 'none';
+    document.getElementById('checkoutBlock').style.display = 'block';
+
+    document.querySelectorAll('.plan-button-container').forEach(el => el.style.display = 'none');
+    if (document.getElementById('btn-' + chosenPlan)) {
+      document.getElementById('btn-' + chosenPlan).style.display = 'block';
+    }
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.textContent = 'Saving Assessment...';
+    submitBtn.disabled = true;
+
     const chosenPlan = document.getElementById('selectedPlan').value;
     const currentDate = new Date().toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
     });
+
     localStorage.setItem('bb_enrollment_date', currentDate);
     localStorage.setItem('bb_enrollment_plan', chosenPlan);
+
+    // Encode Form Data for Netlify
+    const formData = new FormData(form);
+    const encodedData = new URLSearchParams(formData).toString();
+
+    // Post data in background to root path where Netlify captures it
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodedData
+    })
+    .then(response => {
+      showPaymentStep(chosenPlan);
+    })
+    .catch(error => {
+      // Show payment step even if network/offline edge case occurs
+      showPaymentStep(chosenPlan);
+    });
   });
 
-  // STEP 2: Show payment buttons if step=payment OR if URL has no trailing slash issues
-  if (stepParam === 'payment') {
-    document.getElementById('assessmentFormBlock').style.display = 'none';
-    document.getElementById('checkoutBlock').style.display = 'block';
-
-    const activePlan = localStorage.getItem('bb_enrollment_plan') || planParam || 'foundation';
-    
-    document.querySelectorAll('.plan-button-container').forEach(el => el.style.display = 'none');
-    if (document.getElementById('btn-' + activePlan)) {
-      document.getElementById('btn-' + activePlan).style.display = 'block';
-    }
-  }
-
-  // STEP 3: Handle post-payment return
+  // Handle post-payment return status
   if (statusParam === 'enrolled') {
     document.getElementById('assessmentFormBlock').style.display = 'none';
     document.getElementById('checkoutBlock').style.display = 'none';
