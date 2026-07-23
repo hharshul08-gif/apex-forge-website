@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Complete Your Payment | Built Beyond</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+  .assessment-container {
+    max-width: 680px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+  .plan-button-container {
+    display: none;
+    margin-top: 1.5rem;
+  }
+  .enrolled-badge {
+    display: inline-block;
+    background: #e6f4ea;
+    color: #137333;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .enrollment-details-card {
+    background: #f8f9fa;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: left;
+  }
+  .enrollment-details-card table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .enrollment-details-card td {
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+  .enrollment-details-card tr:not(:last-child) td {
+    border-bottom: 1px solid #edf2f7;
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+<div class="shell nav-wrap">
+<a aria-label="Built Beyond home" class="brand" href="index.html#top">
+<span><strong>BUILT BEYOND</strong><small>Performance Coaching</small></span>
+</a>
+</div>
+</header>
+
+<main class="shell">
+  <div class="assessment-container">
+    <!-- STEP 2: Checkout Block -->
+    <div id="checkoutBlock">
+      <p class="kicker">Step 2 of 2</p>
+      <h2>Complete Your Enrollment</h2>
+      <p style="margin-bottom: 1.5rem; opacity: 0.85;">Your assessment details have been saved successfully. Please complete your payment below to finalize enrollment.</p>
+
+      <!-- Foundation Plan Button -->
+      <div id="btn-foundation" class="plan-button-container">
+        <h3 style="margin-bottom: 1rem;">Foundation Plan (₹4,800)</h3>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGunCpCS76IPFx" async> </script> </form>
+      </div>
+
+      <!-- Momentum Plan Button -->
+      <div id="btn-momentum" class="plan-button-container">
+        <h3 style="margin-bottom: 1rem;">Momentum Plan (₹8,000)</h3>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGuqq1QOc3WZOV" async> </script> </form>
+      </div>
+
+      <!-- Transformation Plan Button -->
+      <div id="btn-transformation" class="plan-button-container">
+        <h3 style="margin-bottom: 1rem;">Transformation Plan (₹13,600)</h3>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGusnNWMw4EpHL" async> </script> </form>
+      </div>
+    </div>
+
+    <!-- ENROLLED STATUS BLOCK (Shown after payment redirect) -->
+    <div id="enrolledBlock" style="display: none;">
+      <span class="enrolled-badge">✓ ENROLLED & ACTIVE</span>
+      <h2>Welcome to Built Beyond!</h2>
+      <p style="font-size: 1rem; margin-top: 0.5rem; opacity: 0.9;">
+        Your assessment and payment have been successfully registered. Here are your enrollment details:
+      </p>
+
+      <div class="enrollment-details-card">
+        <table>
+          <tr>
+            <td><strong>Enrollment Date:</strong></td>
+            <td id="displayDate" style="text-align: right;">-</td>
+          </tr>
+          <tr>
+            <td><strong>Coaching Plan:</strong></td>
+            <td id="displayPlan" style="text-align: right; text-transform: capitalize;">-</td>
+          </tr>
+          <tr>
+            <td><strong>Coaching Tenure:</strong></td>
+            <td id="displayTenure" style="text-align: right;">-</td>
+          </tr>
+          <tr>
+            <td><strong>Status:</strong></td>
+            <td style="text-align: right; color: #137333; font-weight: 700;">Active</td>
+          </tr>
+        </table>
+      </div>
+
+      <p style="font-size: 0.95rem; opacity: 0.85; margin-top: 1rem;">
+        Coach Harshul will review your intake details and connect with you on WhatsApp shortly to begin your program.
+      </p>
+    </div>
+  </div>
+</main>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const planParam = urlParams.get('plan');
+  const statusParam = urlParams.get('status');
+
+  const planMap = {
+    'foundation': { name: 'Foundation Plan', tenure: '12 Weeks' },
+    'momentum': { name: 'Momentum Plan', tenure: '24 Weeks' },
+    'transformation': { name: 'Transformation Plan', tenure: '52 Weeks' }
+  };
+
+  const activePlan = localStorage.getItem('bb_enrollment_plan') || planParam || 'foundation';
+
+  if (statusParam === 'enrolled') {
+    document.getElementById('checkoutBlock').style.display = 'none';
+    document.getElementById('enrolledBlock').style.display = 'block';
+
+    const savedDate = localStorage.getItem('bb_enrollment_date') || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const planInfo = planMap[activePlan] || planMap['foundation'];
+
+    document.getElementById('displayDate').textContent = savedDate;
+    document.getElementById('displayPlan').textContent = planInfo.name;
+    document.getElementById('displayTenure').textContent = planInfo.tenure;
+  } else {
+    document.querySelectorAll('.plan-button-container').forEach(el => el.style.display = 'none');
+    if (document.getElementById('btn-' + activePlan)) {
+      document.getElementById('btn-' + activePlan).style.display = 'block';
+    }
+  }
+</script>
+</body>
+</html>
