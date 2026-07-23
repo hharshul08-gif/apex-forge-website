@@ -1,1 +1,167 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Client Assessment | Built Beyond</title><link rel="icon" href="favicon.svg"><link rel="stylesheet" href="styles.css"></head><body><header class="site-header"><div class="shell nav-wrap"><a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 60 60"><path d="M9 46 25 14h9L18 46H9Z"/><path d="M28 46 44 14h9L37 46h-9Z"/><path d="M18 38h23l-4 8H14l4-8Z"/></svg><span><strong>BUILT BEYOND</strong><small>Health that fits real life.</small></span></a></div></header><main class="section"><div class="shell" style="max-width:820px"><div class="section-heading"><p class="kicker">Client assessment</p><h2>Help me understand your goals and routine.</h2><p>This form creates the foundation for your personalized plan.</p></div><form name="client-assessment" method="POST" data-netlify="true" action="/thank-you.html" class="health-form" style="background:#fff;border:1px solid var(--line);border-radius:28px;color:var(--ink)"><input type="hidden" name="form-name" value="client-assessment"><label><span style="color:var(--ink)">Full name</span><input name="name" required style="background:#f7f8f4;color:var(--ink)"></label><label><span style="color:var(--ink)">Email</span><input type="email" name="email" required style="background:#f7f8f4;color:var(--ink)"></label><label><span style="color:var(--ink)">Phone</span><input name="phone" required style="background:#f7f8f4;color:var(--ink)"></label><label><span style="color:var(--ink)">Age</span><input type="number" name="age" style="background:#f7f8f4;color:var(--ink)"></label><label><span style="color:var(--ink)">Height</span><input name="height" style="background:#f7f8f4;color:var(--ink)"></label><label><span style="color:var(--ink)">Weight</span><input name="weight" style="background:#f7f8f4;color:var(--ink)"></label><label class="wide"><span style="color:var(--ink)">Primary goal</span><select name="goal" style="background:#f7f8f4;color:var(--ink)"><option>Fat loss</option><option>Muscle gain</option><option>Body recomposition</option><option>General health</option></select></label><label class="wide"><span style="color:var(--ink)">Work schedule and lifestyle</span><textarea name="schedule" rows="5" style="padding:14px;border-radius:13px;border:1px solid #dfe4db;background:#f7f8f4;font:inherit"></textarea></label><label class="wide"><span style="color:var(--ink)">Current training and diet</span><textarea name="current-routine" rows="5" style="padding:14px;border-radius:13px;border:1px solid #dfe4db;background:#f7f8f4;font:inherit"></textarea></label><label class="wide"><span style="color:var(--ink)">Medical conditions, injuries or allergies</span><textarea name="medical" rows="4" style="padding:14px;border-radius:13px;border:1px solid #dfe4db;background:#f7f8f4;font:inherit"></textarea></label><button class="btn primary wide" type="submit">Submit assessment</button></form></div></main></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Client Assessment | Built Beyond</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+  .assessment-container {
+    max-width: 680px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+  }
+  .checkout-section {
+    display: none;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .plan-button-container {
+    display: none;
+    margin-top: 1.5rem;
+  }
+  .enrolled-badge {
+    display: inline-block;
+    background: #e6f4ea;
+    color: #137333;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+<div class="shell nav-wrap">
+<a aria-label="Built Beyond home" class="brand" href="index.html#top">
+<span><strong>BUILT BEYOND</strong><small>Performance Coaching</small></span>
+</a>
+</div>
+</header>
+
+<main class="shell">
+  <div class="assessment-container">
+    <div id="assessmentFormBlock">
+      <p class="kicker">Step 1 of 2</p>
+      <h2>Client Assessment Form</h2>
+      <p style="margin-bottom: 2rem; opacity: 0.85;">Please fill out your details prior to selecting and finalizing your coaching package.</p>
+      
+      <form id="assessmentForm" name="client-assessment" method="POST" data-netlify="true">
+        <div class="form-group">
+          <label for="fullName">Full Name *</label>
+          <input type="text" id="fullName" name="name" required placeholder="John Doe">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" required placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone / WhatsApp Number *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210">
+        </div>
+        <div class="form-group">
+          <label for="selectedPlan">Select Plan *</label>
+          <select id="selectedPlan" name="plan" required>
+            <option value="foundation">Foundation (12 Weeks) — ₹4,800</option>
+            <option value="momentum">Momentum (24 Weeks) — ₹8,000</option>
+            <option value="transformation">Transformation (52 Weeks) — ₹13,600</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="goals">Primary Health & Fitness Goals</label>
+          <textarea id="goals" name="goals" rows="4" placeholder="Share your primary targets, busy schedule considerations, etc."></textarea>
+        </div>
+        <button type="submit" class="btn primary full">Submit Assessment & Proceed to Payment →</button>
+      </form>
+    </div>
+
+    <!-- STEP 2: Checkout & Enrollment Confirmation Block -->
+    <div id="checkoutBlock" class="checkout-section">
+      <p class="kicker">Step 2 of 2</p>
+      <h2>Complete Your Enrollment</h2>
+      <p style="margin-bottom: 1.5rem; opacity: 0.85;">Your assessment details have been saved successfully. Please complete your payment below to finish enrollment.</p>
+
+      <!-- Foundation Plan Button -->
+      <div id="btn-foundation" class="plan-button-container">
+        <h3>Foundation Plan (₹4,800)</h3>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGunCpCS76IPFx" async> </script> </form>
+      </div>
+
+      <!-- Momentum Plan Button -->
+      <div id="btn-momentum" class="plan-button-container">
+        <h3>Momentum Plan (₹8,000)</h3>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGuqq1QOc3WZOV" async> </script> </form>
+      </div>
+
+      <!-- Transformation Plan Button -->
+      <div id="btn-transformation" class="plan-button-container">
+        <h3>Transformation Plan (₹13,600)</h3>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGusnNWMw4EpHL" async> </script> </form>
+      </div>
+    </div>
+
+    <!-- ENROLLED STATUS BLOCK (Shown after payment redirect/completion) -->
+    <div id="enrolledBlock" style="display: none; text-align: center; padding: 2rem 0;">
+      <span class="enrolled-badge">✓ ENROLLED & ACTIVE</span>
+      <h2>Welcome to Built Beyond!</h2>
+      <p style="font-size: 1.1rem; margin-top: 1rem; opacity: 0.9;">
+        Your assessment and payment have been successfully registered. Coach Harshul will review your details and connect with you on WhatsApp shortly to kick off your coaching!
+      </p>
+    </div>
+  </div>
+</main>
+
+<script>
+  // Auto-select plan from URL query params (e.g. assessment.html?plan=momentum)
+  const urlParams = new URLSearchParams(window.location.search);
+  const planParam = urlParams.get('plan');
+  if (planParam && document.getElementById('selectedPlan')) {
+    document.getElementById('selectedPlan').value = planParam;
+  }
+
+  // Handle Form Submission
+  document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const chosenPlan = document.getElementById('selectedPlan').value;
+    
+    // Hide form, show checkout section
+    document.getElementById('assessmentFormBlock').style.display = 'none';
+    document.getElementById('checkoutBlock').style.display = 'block';
+
+    // Show appropriate Razorpay button
+    document.querySelectorAll('.plan-button-container').forEach(el => el.style.display = 'none');
+    if (document.getElementById('btn-' + chosenPlan)) {
+      document.getElementById('btn-' + chosenPlan).style.display = 'block';
+    }
+  });
+
+  // Check if client is returning after payment completion
+  if (urlParams.get('status') === 'enrolled') {
+    document.getElementById('assessmentFormBlock').style.display = 'none';
+    document.getElementById('checkoutBlock').style.display = 'none';
+    document.getElementById('enrolledBlock').style.display = 'block';
+  }
+</script>
+</body>
+</html>
