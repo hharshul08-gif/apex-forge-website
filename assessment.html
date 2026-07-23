@@ -48,6 +48,25 @@
     font-weight: 700;
     margin-bottom: 1rem;
   }
+  .enrollment-details-card {
+    background: #f8f9fa;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    text-align: left;
+  }
+  .enrollment-details-card table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .enrollment-details-card td {
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+  }
+  .enrollment-details-card tr:not(:last-child) td {
+    border-bottom: 1px solid #edf2f7;
+  }
 </style>
 </head>
 <body>
@@ -120,12 +139,37 @@
       </div>
     </div>
 
-    <!-- ENROLLED STATUS BLOCK (Shown after payment redirect/completion) -->
-    <div id="enrolledBlock" style="display: none; text-align: center; padding: 2rem 0;">
+    <!-- ENROLLED STATUS BLOCK (Shown after payment redirect) -->
+    <div id="enrolledBlock" style="display: none; text-align: center; padding: 1rem 0;">
       <span class="enrolled-badge">✓ ENROLLED & ACTIVE</span>
       <h2>Welcome to Built Beyond!</h2>
-      <p style="font-size: 1.1rem; margin-top: 1rem; opacity: 0.9;">
-        Your assessment and payment have been successfully registered. Coach Harshul will review your details and connect with you on WhatsApp shortly to kick off your coaching!
+      <p style="font-size: 1rem; margin-top: 0.5rem; opacity: 0.9;">
+        Your assessment and payment have been successfully registered. Here are your enrollment details:
+      </p>
+
+      <div class="enrollment-details-card">
+        <table>
+          <tr>
+            <td><strong>Enrollment Date:</strong></td>
+            <td id="displayDate" style="text-align: right;">-</td>
+          </tr>
+          <tr>
+            <td><strong>Coaching Plan:</strong></td>
+            <td id="displayPlan" style="text-align: right; text-transform: capitalize;">-</td>
+          </tr>
+          <tr>
+            <td><strong>Coaching Tenure:</strong></td>
+            <td id="displayTenure" style="text-align: right;">-</td>
+          </tr>
+          <tr>
+            <td><strong>Status:</strong></td>
+            <td style="text-align: right; color: #137333; font-weight: 700;">Active</td>
+          </tr>
+        </table>
+      </div>
+
+      <p style="font-size: 0.95rem; opacity: 0.85; margin-top: 1rem;">
+        Coach Harshul will review your intake details and connect with you on WhatsApp shortly to begin your program.
       </p>
     </div>
   </div>
@@ -139,12 +183,29 @@
     document.getElementById('selectedPlan').value = planParam;
   }
 
+  // Plan Details Configuration
+  const planMap = {
+    'foundation': { name: 'Foundation Plan', tenure: '12 Weeks' },
+    'momentum': { name: 'Momentum Plan', tenure: '24 Weeks' },
+    'transformation': { name: 'Transformation Plan', tenure: '52 Weeks' }
+  };
+
   // Handle Form Submission
   document.getElementById('assessmentForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const chosenPlan = document.getElementById('selectedPlan').value;
     
+    // Store enrollment info in local storage so it persists through payment redirect
+    const currentDate = new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    
+    localStorage.setItem('bb_enrollment_date', currentDate);
+    localStorage.setItem('bb_enrollment_plan', chosenPlan);
+
     // Hide form, show checkout section
     document.getElementById('assessmentFormBlock').style.display = 'none';
     document.getElementById('checkoutBlock').style.display = 'block';
@@ -161,6 +222,15 @@
     document.getElementById('assessmentFormBlock').style.display = 'none';
     document.getElementById('checkoutBlock').style.display = 'none';
     document.getElementById('enrolledBlock').style.display = 'block';
+
+    // Retrieve saved details or fallback
+    const savedDate = localStorage.getItem('bb_enrollment_date') || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const savedPlanKey = localStorage.getItem('bb_enrollment_plan') || planParam || 'foundation';
+    const planInfo = planMap[savedPlanKey] || planMap['foundation'];
+
+    document.getElementById('displayDate').textContent = savedDate;
+    document.getElementById('displayPlan').textContent = planInfo.name;
+    document.getElementById('displayTenure').textContent = planInfo.tenure;
   }
 </script>
 </body>
