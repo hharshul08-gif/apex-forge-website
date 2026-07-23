@@ -1,108 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Client Assessment | Built Beyond</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet"/>
-<link href="styles.css" rel="stylesheet"/>
-<style>
-  .assessment-container {
-    max-width: 680px;
-    margin: 3rem auto;
-    padding: 2.5rem;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  }
-  .form-group {
-    margin-bottom: 1.5rem;
-  }
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  }
-  .form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-family: inherit;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intake Assessment - Built Beyond</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        h2 { margin-top: 0; color: #38bdf8; text-align: center; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 500; }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            background-color: #0f172a;
+            color: #fff;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover { background-color: #0369a1; }
+    </style>
 </head>
 <body>
-<header class="site-header">
-<div class="shell nav-wrap">
-<a aria-label="Built Beyond home" class="brand" href="index.html#top">
-<span><strong>BUILT BEYOND</strong><small>Performance Coaching</small></span>
-</a>
-</div>
-</header>
 
-<main class="shell">
-  <div class="assessment-container">
-    <div id="assessmentFormBlock">
-      <p class="kicker">Step 1 of 2</p>
-      <h2>Client Assessment Form</h2>
-      <p style="margin-bottom: 2rem; opacity: 0.85;">Please fill out your details prior to selecting and finalizing your coaching package.</p>
-      
-      <!-- Native Netlify Redirect with plan parameter in action target -->
-      <form id="assessmentForm" name="client-assessment" method="POST" action="/payment.html" data-netlify="true">
-        <input type="hidden" name="form-name" value="client-assessment" />
+<div class="container">
+    <h2>Built Beyond Intake Assessment</h2>
+    
+    <!-- Notice method="GET" to allow GitHub Pages static navigation without 405 error -->
+    <form action="payment.html" method="GET">
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe">
+        </div>
         
         <div class="form-group">
-          <label for="fullName">Full Name *</label>
-          <input type="text" id="fullName" name="name" required placeholder="John Doe">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com">
         </div>
+
         <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" required placeholder="john@example.com">
+            <label for="plan">Select Coaching Program</label>
+            <select id="plan" name="plan" required>
+                <option value="foundation">Foundation Plan</option>
+                <option value="momentum">Momentum Plan</option>
+                <option value="transformation">Transformation Plan</option>
+            </select>
         </div>
+
         <div class="form-group">
-          <label for="phone">Phone / WhatsApp Number *</label>
-          <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210">
+            <label for="fitness_goal">Primary Fitness Goal</label>
+            <textarea id="fitness_goal" name="fitness_goal" rows="3" placeholder="Tell us about your primary fitness targets..."></textarea>
         </div>
-        <div class="form-group">
-          <label for="selectedPlan">Select Plan *</label>
-          <select id="selectedPlan" name="plan" required>
-            <option value="foundation">Foundation (12 Weeks) — ₹4,800</option>
-            <option value="momentum">Momentum (24 Weeks) — ₹8,000</option>
-            <option value="transformation">Transformation (52 Weeks) — ₹13,600</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="goals">Primary Health & Fitness Goals</label>
-          <textarea id="goals" name="goals" rows="4" placeholder="Share your primary targets, busy schedule considerations, etc."></textarea>
-        </div>
-        <button type="submit" id="submitBtn" class="btn primary full">Submit Assessment & Proceed to Payment →</button>
-      </form>
-    </div>
-  </div>
-</main>
+
+        <button type="submit">Proceed to Payment</button>
+    </form>
+</div>
 
 <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const planParam = urlParams.get('plan');
-  if (planParam && document.getElementById('selectedPlan')) {
-    document.getElementById('selectedPlan').value = planParam;
-  }
-
-  const form = document.getElementById('assessmentForm');
-  form.addEventListener('submit', function() {
-    const chosenPlan = document.getElementById('selectedPlan').value;
-    const currentDate = new Date().toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    // Automatically select plan if passed in the URL (e.g. assessment.html?plan=momentum)
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const planParam = urlParams.get('plan');
+        if (planParam) {
+            const planSelect = document.getElementById('plan');
+            if (planSelect) planSelect.value = planParam.toLowerCase();
+        }
     });
-    localStorage.setItem('bb_enrollment_date', currentDate);
-    localStorage.setItem('bb_enrollment_plan', chosenPlan);
-    
-    // Update action dynamically to append ?plan= chosenPlan so parameter persists across browsers/private windows
-    form.action = '/payment.html?plan=' + encodeURIComponent(chosenPlan);
-  });
 </script>
+
 </body>
 </html>
