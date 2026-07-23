@@ -19,6 +19,25 @@
   .plan-button-container {
     margin-top: 1.5rem;
   }
+  .pay-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background-color: #111111;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: none;
+    cursor: pointer;
+  }
+  .pay-btn:hover {
+    background-color: #333333;
+    transform: translateY(-1px);
+  }
   .enrolled-badge {
     display: inline-block;
     background: #e6f4ea;
@@ -64,46 +83,59 @@
     <div id="checkoutBlock">
       <p class="kicker">Step 2 of 2</p>
       <h2>Complete Your Enrollment</h2>
-      <p style="margin-bottom: 1.5rem; opacity: 0.85;">Your assessment details have been saved successfully. Please complete your payment below to finalize enrollment.</p>
+      <p style="margin-bottom: 2rem; opacity: 0.85;">Your assessment details have been saved successfully. Please click below to proceed with secure payment via Razorpay.</p>
 
       <!-- Foundation Plan Button -->
-      <div id="btn-foundation" class="plan-button-container" style="display: none;">
-        <h3 style="margin-bottom: 1rem;">Foundation Plan (₹4,800)</h3>
-        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGunCpCS76IPFx" async> </script> </form>
+      <div id="btn-foundation" class="plan-button-container">
+        <h3 style="margin-bottom: 1.25rem;">Foundation Plan (₹4,800)</h3>
+        <a href="https://razorpay.me/@builtbeyond?amount=480000" target="_blank" rel="noopener" class="pay-btn">
+          Pay ₹4,800 via Razorpay →
+        </a>
       </div>
 
       <!-- Momentum Plan Button -->
       <div id="btn-momentum" class="plan-button-container" style="display: none;">
-        <h3 style="margin-bottom: 1rem;">Momentum Plan (₹8,000)</h3>
-        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGuqq1QOc3WZOV" async> </script> </form>
+        <h3 style="margin-bottom: 1.25rem;">Momentum Plan (₹8,000)</h3>
+        <a href="https://razorpay.me/@builtbeyond?amount=800000" target="_blank" rel="noopener" class="pay-btn">
+          Pay ₹8,000 via Razorpay →
+        </a>
       </div>
 
       <!-- Transformation Plan Button -->
       <div id="btn-transformation" class="plan-button-container" style="display: none;">
-        <h3 style="margin-bottom: 1rem;">Transformation Plan (₹13,600)</h3>
-        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGusnNWMw4EpHL" async> </script> </form>
+        <h3 style="margin-bottom: 1.25rem;">Transformation Plan (₹13,600)</h3>
+        <a href="https://razorpay.me/@builtbeyond?amount=1360000" target="_blank" rel="noopener" class="pay-btn">
+          Pay ₹13,600 via Razorpay →
+        </a>
       </div>
 
-      <!-- Fallback display if plan selection fails -->
+      <!-- Fallback display showing all options as reliable direct buttons -->
       <div id="btn-fallback" class="plan-button-container" style="display: none;">
-        <h3 style="margin-bottom: 1rem;">Select Your Plan to Pay</h3>
-        <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 1.5rem;">
+        <h3 style="margin-bottom: 1.5rem;">Select Your Plan to Pay</h3>
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: stretch; margin-top: 1rem;">
           <div>
-            <strong>Foundation Plan (₹4,800)</strong>
-            <form style="margin-top: 0.5rem;"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGunCpCS76IPFx" async> </script> </form>
+            <p style="margin-bottom: 0.5rem; font-weight: 600;">Foundation Plan (12 Weeks)</p>
+            <a href="https://razorpay.me/@builtbeyond?amount=480000" target="_blank" rel="noopener" class="pay-btn">
+              Pay ₹4,800 →
+            </a>
           </div>
-          <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 0.5rem 0;"/>
           <div>
-            <strong>Momentum Plan (₹8,000)</strong>
-            <form style="margin-top: 0.5rem;"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGuqq1QOc3WZOV" async> </script> </form>
+            <p style="margin-bottom: 0.5rem; font-weight: 600;">Momentum Plan (24 Weeks)</p>
+            <a href="https://razorpay.me/@builtbeyond?amount=800000" target="_blank" rel="noopener" class="pay-btn">
+              Pay ₹8,000 →
+            </a>
           </div>
-          <hr style="width: 80%; border: 0; border-top: 1px solid #eee; margin: 0.5rem 0;"/>
           <div>
-            <strong>Transformation Plan (₹13,600)</strong>
-            <form style="margin-top: 0.5rem;"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGusnNWMw4EpHL" async> </script> </form>
+            <p style="margin-bottom: 0.5rem; font-weight: 600;">Transformation Plan (52 Weeks)</p>
+            <a href="https://razorpay.me/@builtbeyond?amount=1360000" target="_blank" rel="noopener" class="pay-btn">
+              Pay ₹13,600 →
+            </a>
           </div>
         </div>
       </div>
+
+      <!-- Embedded Razorpay Button Script Fallback -->
+      <div id="razorpay-embed-box" style="margin-top: 2rem;"></div>
 
     </div>
 
@@ -149,9 +181,9 @@
   const statusParam = urlParams.get('status');
 
   const planMap = {
-    'foundation': { name: 'Foundation Plan', tenure: '12 Weeks' },
-    'momentum': { name: 'Momentum Plan', tenure: '24 Weeks' },
-    'transformation': { name: 'Transformation Plan', tenure: '52 Weeks' }
+    'foundation': { name: 'Foundation Plan', tenure: '12 Weeks', buttonId: 'pl_TGunCpCS76IPFx' },
+    'momentum': { name: 'Momentum Plan', tenure: '24 Weeks', buttonId: 'pl_TGuqq1QOc3WZOV' },
+    'transformation': { name: 'Transformation Plan', tenure: '52 Weeks', buttonId: 'pl_TGusnNWMw4EpHL' }
   };
 
   let activePlan = planParam || localStorage.getItem('bb_enrollment_plan');
@@ -167,10 +199,27 @@
     document.getElementById('displayPlan').textContent = planInfo.name;
     document.getElementById('displayTenure').textContent = planInfo.tenure;
   } else {
+    // Hide all plan blocks
+    document.getElementById('btn-foundation').style.display = 'none';
+    document.getElementById('btn-momentum').style.display = 'none';
+    document.getElementById('btn-transformation').style.display = 'none';
+    document.getElementById('btn-fallback').style.display = 'none';
+
     if (activePlan && document.getElementById('btn-' + activePlan)) {
       document.getElementById('btn-' + activePlan).style.display = 'block';
+      
+      // Inject Razorpay embed as primary
+      const planConfig = planMap[activePlan];
+      if (planConfig && planConfig.buttonId) {
+        const form = document.createElement('form');
+        const script = document.createElement('script');
+        script.src = 'https://checkout.razorpay.com/v1/payment-button.js';
+        script.setAttribute('data-payment_button_id', planConfig.buttonId);
+        script.async = true;
+        form.appendChild(script);
+        document.getElementById('razorpay-embed-box').appendChild(form);
+      }
     } else {
-      // Fallback: show all plan buttons so the user is never stuck on a blank screen
       document.getElementById('btn-fallback').style.display = 'block';
     }
   }
