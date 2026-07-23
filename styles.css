@@ -125,3 +125,31 @@
     color: #64748b;
     margin-top: 2px;
 }
+
+/* Primary Button POP Glow */
+.btn-primary.btn-glow {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-primary.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(56, 189, 248, 0.6);
+}
+
+/* Photo Frame Premium Depth */
+.photo-frame-wrapper {
+  position: relative;
+  border-radius: 24px;
+  padding: 8px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15);
+}
+
+.photo-frame {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
