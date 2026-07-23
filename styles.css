@@ -25,3 +25,44 @@
 @media(max-width:760px){.instagram-qr{width:104px;height:132px}}
 
 .service-notice{margin-top:28px;padding:18px 22px;border:1px solid #dce4ea;border-radius:16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:space-between;background:#f8fafb}.service-notice strong{color:#111}.service-notice span{color:#53606a}
+
+/* Built Beyond Brand Logo Styles */
+.brand-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.bb-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.brand-text .title {
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    line-height: 1;
+}
+
+.brand-text .highlight {
+    color: #38bdf8;
+}
+
+.brand-text .subtitle {
+    color: #64748b;
+    font-weight: 700;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
