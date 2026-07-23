@@ -85,7 +85,10 @@
       <h2>Client Assessment Form</h2>
       <p style="margin-bottom: 2rem; opacity: 0.85;">Please fill out your details prior to selecting and finalizing your coaching package.</p>
       
+      <!-- Hidden form-name input required for Netlify AJAX submissions -->
       <form id="assessmentForm" name="client-assessment" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="client-assessment" />
+        
         <div class="form-group">
           <label for="fullName">Full Name *</label>
           <input type="text" id="fullName" name="name" required placeholder="John Doe">
@@ -110,7 +113,7 @@
           <label for="goals">Primary Health & Fitness Goals</label>
           <textarea id="goals" name="goals" rows="4" placeholder="Share your primary targets, busy schedule considerations, etc."></textarea>
         </div>
-        <button type="submit" class="btn primary full">Submit Assessment & Proceed to Payment →</button>
+        <button type="submit" id="submitBtn" class="btn primary full">Submit Assessment & Proceed to Payment →</button>
       </form>
     </div>
 
@@ -118,23 +121,23 @@
     <div id="checkoutBlock" class="checkout-section">
       <p class="kicker">Step 2 of 2</p>
       <h2>Complete Your Enrollment</h2>
-      <p style="margin-bottom: 1.5rem; opacity: 0.85;">Your assessment details have been saved successfully. Please complete your payment below to finish enrollment.</p>
+      <p style="margin-bottom: 1.5rem; opacity: 0.85;">Your assessment details have been saved successfully. Please click below to complete your payment.</p>
 
       <!-- Foundation Plan Button -->
       <div id="btn-foundation" class="plan-button-container">
-        <h3>Foundation Plan (₹4,800)</h3>
+        <h3 style="margin-bottom: 1rem;">Foundation Plan (₹4,800)</h3>
         <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGunCpCS76IPFx" async> </script> </form>
       </div>
 
       <!-- Momentum Plan Button -->
       <div id="btn-momentum" class="plan-button-container">
-        <h3>Momentum Plan (₹8,000)</h3>
+        <h3 style="margin-bottom: 1rem;">Momentum Plan (₹8,000)</h3>
         <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGuqq1QOc3WZOV" async> </script> </form>
       </div>
 
       <!-- Transformation Plan Button -->
       <div id="btn-transformation" class="plan-button-container">
-        <h3>Transformation Plan (₹13,600)</h3>
+        <h3 style="margin-bottom: 1rem;">Transformation Plan (₹13,600)</h3>
         <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TGusnNWMw4EpHL" async> </script> </form>
       </div>
     </div>
@@ -176,27 +179,30 @@
 </main>
 
 <script>
-  // Auto-select plan from URL query params (e.g. assessment.html?plan=momentum)
   const urlParams = new URLSearchParams(window.location.search);
   const planParam = urlParams.get('plan');
   if (planParam && document.getElementById('selectedPlan')) {
     document.getElementById('selectedPlan').value = planParam;
   }
 
-  // Plan Details Configuration
   const planMap = {
     'foundation': { name: 'Foundation Plan', tenure: '12 Weeks' },
     'momentum': { name: 'Momentum Plan', tenure: '24 Weeks' },
     'transformation': { name: 'Transformation Plan', tenure: '52 Weeks' }
   };
 
-  // Handle Form Submission
-  document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+  const form = document.getElementById('assessmentForm');
+  
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
     
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.textContent = 'Saving Assessment...';
+    submitBtn.disabled = true;
+
+    const formData = new FormData(form);
     const chosenPlan = document.getElementById('selectedPlan').value;
     
-    // Store enrollment info in local storage so it persists through payment redirect
     const currentDate = new Date().toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
@@ -206,24 +212,38 @@
     localStorage.setItem('bb_enrollment_date', currentDate);
     localStorage.setItem('bb_enrollment_plan', chosenPlan);
 
-    // Hide form, show checkout section
-    document.getElementById('assessmentFormBlock').style.display = 'none';
-    document.getElementById('checkoutBlock').style.display = 'block';
+    // Send Form Data to Netlify via AJAX (Background submission)
+    fetch('/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString()
+    })
+    .then(() => {
+      // Show Razorpay Step 2
+      document.getElementById('assessmentFormBlock').style.display = 'none';
+      document.getElementById('checkoutBlock').style.display = 'block';
 
-    // Show appropriate Razorpay button
-    document.querySelectorAll('.plan-button-container').forEach(el => el.style.display = 'none');
-    if (document.getElementById('btn-' + chosenPlan)) {
-      document.getElementById('btn-' + chosenPlan).style.display = 'block';
-    }
+      document.querySelectorAll('.plan-button-container').forEach(el => el.style.display = 'none');
+      if (document.getElementById('btn-' + chosenPlan)) {
+        document.getElementById('btn-' + chosenPlan).style.display = 'block';
+      }
+    })
+    .catch((error) => {
+      // Fallback display if offline/error
+      document.getElementById('assessmentFormBlock').style.display = 'none';
+      document.getElementById('checkoutBlock').style.display = 'block';
+      if (document.getElementById('btn-' + chosenPlan)) {
+        document.getElementById('btn-' + chosenPlan).style.display = 'block';
+      }
+    });
   });
 
-  // Check if client is returning after payment completion
+  // Handle post-payment return
   if (urlParams.get('status') === 'enrolled') {
     document.getElementById('assessmentFormBlock').style.display = 'none';
     document.getElementById('checkoutBlock').style.display = 'none';
     document.getElementById('enrolledBlock').style.display = 'block';
 
-    // Retrieve saved details or fallback
     const savedDate = localStorage.getItem('bb_enrollment_date') || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
     const savedPlanKey = localStorage.getItem('bb_enrollment_plan') || planParam || 'foundation';
     const planInfo = planMap[savedPlanKey] || planMap['foundation'];
