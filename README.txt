@@ -1,22 +1,19 @@
-BUILT BEYOND — LAUNCH PACKAGE
+BUILT BEYOND V4.3 — RAZORPAY REVIEW EDITION
 
-QUICK LAUNCH (NETLIFY)
-1. Log in to Netlify.
-2. Drag this entire folder into Netlify Drop, or upload the ZIP.
-3. Connect your custom domain builtbeyond.fit.
-4. Test all Razorpay coaching links and WhatsApp supplement links.
+Purpose:
+- Positions Built Beyond exclusively as an online fitness and nutrition coaching service.
+- Removes all physical supplement sales, catalogue links, product pricing and shipping claims.
+- Keeps clear coaching descriptions and INR pricing.
+- Adds Contact Us, Terms, Privacy, Cancellation & Refund, and Service Delivery policies.
+- Uses Razorpay-hosted Payment Links only; no API keys or payment secrets are stored in the website.
 
-WHAT IS INCLUDED
-- Responsive premium homepage
-- Three renamed coaching plans with equal inclusions
-- Health & Lifestyle coaching process
-- Upgraded diet tool: BMR, maintenance, macros, 10% fat-loss deficit (never below BMR), 15% muscle-gain surplus
-- Separate supplements catalogue with WhatsApp enquiry only
-- Founder story, FAQs and legal pages
-- SEO metadata, sitemap, robots and Netlify redirects
+Deployment:
+Upload every file in this folder to the root of your GitHub repository and deploy through Netlify.
 
-IMPORTANT BEFORE GOING LIVE
-- Confirm prices, payment links and WhatsApp number.
-- Confirm supplement stock and current pricing before accepting orders.
-- Coaching is paid through Razorpay. Supplements are enquiry-only and remain separate.
-- Replace any photos later by keeping the same filenames.
+Before Razorpay resubmission:
+1. Confirm the live site shows no supplement products or catalogue links.
+2. Open every footer policy link and confirm it loads.
+3. Test all three coaching payment links.
+4. Submit https://builtbeyond.fit as an online fitness and nutrition coaching service.
+
+Approval remains Razorpay's decision and cannot be guaranteed.
