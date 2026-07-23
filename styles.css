@@ -66,3 +66,62 @@
     letter-spacing: 2px;
     margin-top: 4px;
 }
+
+/* ==========================================
+   NEW PREMIUM BRANDING & LOGO STYLES
+   ========================================== */
+
+/* Header Container Adjustments */
+.site-header .shell.nav-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Brand Link Base */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.brand-logo:hover {
+    transform: translateY(-1px);
+}
+
+/* SVG Emblem Sizing */
+.bb-icon {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 8px rgba(56, 189, 248, 0.25));
+}
+
+/* Typography Styling */
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.brand-text .title {
+    font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    color: #0f172a;
+}
+
+.brand-text .title .highlight {
+    color: #0284c7;
+}
+
+.brand-text .subtitle {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: #64748b;
+    margin-top: 2px;
+}
